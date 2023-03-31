@@ -16,10 +16,9 @@ const signup = createAsyncThunk(
     async (object, thunkAPI) => {
         try {
             const response = await axios.post('/api/admin/signup', object);
-            console.log(response.data.data)
             return response.data;
         } catch (error) {
-            console.log(error);
+            return thunkAPI.rejectWithValue(error.message);
         }
     }
 )
@@ -29,11 +28,10 @@ const login = createAsyncThunk(
     async (object, thunkAPI) => {
         try {
             const response = await axios.post('/api/admin/login', object);
-            setAuthHeader(response.data.token);
             console.log(response)
             return response.data;
         } catch (error) {
-            console.log(error);
+            return thunkAPI.rejectWithValue(error.message);
         }
     }
 )
@@ -45,17 +43,9 @@ const logout = createAsyncThunk(
             await axios.get('/api/admin/logout');
             clearAuthHeader();
         } catch (error) {
-            console.log(error);
+            return thunkAPI.rejectWithValue(error.message);
         }
     }
 )
-
-// const logout = async () => {
-//     try {
-//         await axios.get(`${API_URL}/api/admin/logout`);
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
 
 export { signup, login, logout };

@@ -1,6 +1,6 @@
 import { Formik } from "formik";
 import * as yup from 'yup';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addClient } from "../../redux/clients/clientsOperation";
 
 import { FieldForm, Input } from "./ClientFormStyled";
@@ -16,7 +16,6 @@ const ClientForm = () => {
     const dispatch = useDispatch()
 
     const handleSubmit = (value, { resetForm }) => {
-        console.log(value);
         dispatch(addClient(value));
         resetForm();
     }

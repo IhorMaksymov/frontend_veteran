@@ -23,7 +23,6 @@ const clientsSlice = createSlice({
             state.isLoading = false;
             state.error = null;
             state.items = action.payload;
-            console.log(action.payload);
         },
         [listClients.rejected](state, action) {
             state.isLoading = false;
@@ -48,10 +47,7 @@ const clientsSlice = createSlice({
         [deleteClient.fulfilled](state, action) {
             state.isLoading = false;
             state.error = null;
-            console.log(action.payload)
-            console.log(action.payload.id)
-            const index = state.items.findIndex(client => client.id === action.payload._id);
-            console.log(index)
+            const index = state.items.findIndex(client => client._id === action.payload.id);
             state.items.splice(index, 1);
         },
         [deleteClient.rejected](state, action) {
