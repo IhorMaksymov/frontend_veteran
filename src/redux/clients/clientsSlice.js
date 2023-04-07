@@ -13,7 +13,9 @@ const clientsSlice = createSlice({
     name: 'clients',
     initialState,
     reducers: {
-
+        valueClientFilter(state, action) {
+            state.filter = action.payload;
+        }
     },
     extraReducers: {
         [listClients.pending](state) {
@@ -35,7 +37,6 @@ const clientsSlice = createSlice({
             state.isLoading = false;
             state.error = null;
             state.items.push(action.payload);
-            console.log(action.payload);
         },
         [addClient.rejected](state, action) {
             state.isLoading = false;
@@ -56,5 +57,7 @@ const clientsSlice = createSlice({
         }
     }
 })
+
+export const { valueClientFilter } = clientsSlice.actions;
 
 export const clientsReducer = clientsSlice.reducer;

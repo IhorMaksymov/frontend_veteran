@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import Box from "../components/Box/Box";
 
 import ClientForm from "../components/ClientForm/ClientForm";
+import Filter from "../components/Filter/Filter";
 import ClietnsList from "../components/ClientsList/ClientsList";
 
 import { listClients } from "../redux/clients/clientsOperation";
@@ -20,9 +21,10 @@ const ClientsPage = () => {
     
     return (
         <Box
-        
+            pt={5}
         >
             <ClientForm />
+            <Filter />
             <ClietnsList />
         </Box>
     )

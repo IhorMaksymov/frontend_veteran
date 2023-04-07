@@ -4,10 +4,10 @@ import { useDispatch } from "react-redux";
 
 import { signup } from "../../redux/auth/authOperation";
 
-import { Container, FieldForm, Label, InputField, BtnSub } from './RegisterFormStyled'
+import { Container, FieldForm, Label, InputField, BtnSub } from './RegisterFormStyled';
 
 const schema = yup.object().shape({
-    email: yup.string().required(),
+    email: yup.string().email().required(),
     password: yup.string().required(),
 });
 

@@ -8,6 +8,9 @@ const listClients = createAsyncThunk(
     async (_, thunkAPI) => {
         try {
             const response = await axios.get('/api/clients')
+            if (!response) {
+                return;
+            }
             return response.data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);
@@ -30,7 +33,6 @@ const addClient = createAsyncThunk(
 const deleteClient = createAsyncThunk(
     'clients/deleteClient',
     async ( id , thunkAPI) => {
-        console.log(id)
         try {
             const response = await axios.delete(`/api/clients/${id}`);
             return response.data;

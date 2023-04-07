@@ -4,16 +4,18 @@ import { logout } from "../../redux/auth/authOperation";
 
 import { selectUser } from '../../redux/auth/authSelectors';
 
+import { UserWrapp, P, Btn } from "./UserMenuStyled";
+
 const UserMenu = () => {
 
     const user = useSelector(selectUser);
     const dispatch = useDispatch();
 
     return (
-        <div>
-            <p>Welcom, {user.email}</p>
-            <button type="button" onClick={() => dispatch(logout())}>Logout</button>
-        </div>
+        <UserWrapp>
+            <P>Welcom, {user.email}</P>
+            <Btn type="button" onClick={() => dispatch(logout())}>Logout</Btn>
+        </UserWrapp>
     )
 }
 
